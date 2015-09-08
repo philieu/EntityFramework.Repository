@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>EntityFramework.Repository</id>
+    <version>0.9</version>
+    <authors>Phi Lieu</authors>
+    <description>A generic repository pattern for use with EntityFramework. This library also support accessing multiple DB context in the same project.</description>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<projectUrl>https://github.com/philieu/EntityFramework.Repository</projectUrl>
+    <dependencies>
+      <dependency id="EntityFramework" version="6.1.3" />
+    </dependencies> 
+	<releaseNotes>An initial working version.</releaseNotes>
+    <tags>EntityFramework Repository Generic</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\EntityFramework.Repository.dll" target="lib\net45" />
+    <file src="bin\Release\EntityFramework.Repository.pdb" target="lib\net45" />
+  </files>
+</package>
