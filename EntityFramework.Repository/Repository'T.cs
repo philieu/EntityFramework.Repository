@@ -27,21 +27,21 @@ namespace EntityFramework.Repository
 
         public virtual int CountAll(params Expression<Func<TEntity, object>>[] includeProperties)
         {
-            IQueryable<TEntity> query = AsQueryable();
+            var query = AsQueryable();
             query = PerformInclusions(includeProperties, query);
             return query.Count();
         }
 
         public virtual int Count(Expression<Func<TEntity, bool>> where, params Expression<Func<TEntity, object>>[] includeProperties)
         {
-            IQueryable<TEntity> query = AsQueryable();
+            var query = AsQueryable();
             query = PerformInclusions(includeProperties, query);
             return query.Count(where);
         }
 
         public virtual IEnumerable<TEntity> GetAll(params Expression<Func<TEntity, object>>[] includeProperties)
         {
-            IQueryable<TEntity> query = AsQueryable();
+            var query = AsQueryable();
             query = PerformInclusions(includeProperties, query);
             return query.ToList();
         }
@@ -49,28 +49,28 @@ namespace EntityFramework.Repository
         public virtual IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> where,
                                    params Expression<Func<TEntity, object>>[] includeProperties)
         {
-            IQueryable<TEntity> query = AsQueryable();
+            var query = AsQueryable();
             query = PerformInclusions(includeProperties, query);
             return query.Where(where);
         }
 
         public virtual TEntity Single(Expression<Func<TEntity, bool>> where, params Expression<Func<TEntity, object>>[] includeProperties)
         {
-            IQueryable<TEntity> query = AsQueryable();
+            var query = AsQueryable();
             query = PerformInclusions(includeProperties, query);
             return query.Single(where);
         }
 
         public virtual TEntity First(Expression<Func<TEntity, bool>> where, params Expression<Func<TEntity, object>>[] includeProperties)
         {
-            IQueryable<TEntity> query = AsQueryable();
+            var query = AsQueryable();
             query = PerformInclusions(includeProperties, query);
             return query.First(where);
         }
 
         public virtual TEntity SingleOrDefault(Expression<Func<TEntity, bool>> where, params Expression<Func<TEntity, object>>[] includeProperties)
         {
-            IQueryable<TEntity> query = AsQueryable();
+            var query = AsQueryable();
             query = PerformInclusions(includeProperties, query);
             return query.SingleOrDefault(where);
         }
@@ -97,7 +97,7 @@ namespace EntityFramework.Repository
             return includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
         }
 
-        public TEntity FirstOrDefault(Expression<Func<TEntity, bool>> where, params Expression<Func<TEntity, object>>[] includeProperties)
+        public virtual TEntity FirstOrDefault(Expression<Func<TEntity, bool>> where, params Expression<Func<TEntity, object>>[] includeProperties)
         {
             var query = AsQueryable();
             query = PerformInclusions(includeProperties, query);
