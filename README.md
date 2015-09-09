@@ -13,9 +13,9 @@ Below is a brief quick start guide.
 
 ## Database first
  
-Follow the steps below use the repository in a database first scenario:
+Follow the steps below to use the repository in a database first scenario:
 - Create the EDMX model as you normally would using Visual Studio
-- Create a partial class of the DB context created in the step above and implements IDbContext. For example:
+- Create a partial class of the DB context in the step above and implements `IDbContext`. For example:
 ```C#
     public partial class TestDbEntities : ITestDbContext
     {
@@ -37,13 +37,11 @@ Here is a very basic way to use it without dependency injection:
     } 
 ```
 
-Please have a look at the section below on how to use it with an IoC container.
-
 ## Code first
 TO DO
  
 ## How to manage transaction
-Normally, every UnitOfWork.SaveChanges() would be executed in a transaction. If you would like to manage the transaction manually, use IUnitOfWorkSession.
+Normally, every `UnitOfWork.SaveChanges()` would be executed in a transaction. If you would like to manage the transaction manually, use `IUnitOfWorkSession`.
 
 ```C#
     using (var session = unitOfWork.StartSession())
@@ -59,7 +57,7 @@ Normally, every UnitOfWork.SaveChanges() would be executed in a transaction. If 
 ```
  
 ## Using with an IoC container (e.g. Autofac for example)
-Below is an example on how to register various classes using Autofac as an IoC container.
+Below is an example on how to register and use with Autofac as the IoC container.
 - Registration
 
 ```C#
