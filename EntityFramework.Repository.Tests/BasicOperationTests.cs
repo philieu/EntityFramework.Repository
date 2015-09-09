@@ -66,5 +66,47 @@ namespace EntityFramework.Repository.Tests
             HasAccount(_account.Name).Should().BeTrue();
             HasTransaction(_account.Name, _transaction.Description).Should().BeTrue();
         }
+
+        [Test]
+        public void Should_be_able_to_manage_transaction_manually()
+        {
+            // Arrange
+            var accountRepository = GlobalSetup.Container.Resolve<IRepository<ITestDbContext, Account>>();
+            var unitOfWork = GlobalSetup.Container.Resolve<IUnitOfWork<ITestDbContext>>();
+
+            // Act
+            using (var session = unitOfWork.StartSession())
+            {
+                accountRepository.Insert(_account);
+                unitOfWork.SaveChanges();
+
+                session.Commit();
+            }
+
+            // Assert
+            HasAccount(_account.Name).Should().BeTrue();
+            HasTransaction(_account.Name, _transaction.Description).Should().BeTrue();
+        }
+
+        [Test]
+        public void Should_rollback_transaction_if_no_commit()
+        {
+            // Arrange
+            var accountRepository = GlobalSetup.Container.Resolve<IRepository<ITestDbContext, Account>>();
+            var unitOfWork = GlobalSetup.Container.Resolve<IUnitOfWork<ITestDbContext>>();
+
+            // Act
+            using (var session = unitOfWork.StartSession())
+            {
+                accountRepository.Insert(_account);
+                unitOfWork.SaveChanges();
+            }
+
+            // Assert
+            HasAccount(_account.Name).Should().BeFalse();
+            HasTransaction(_account.Name, _transaction.Description).Should().BeFalse();
+        }
+
+
     }
 }
