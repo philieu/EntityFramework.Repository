@@ -4,7 +4,7 @@
     <id>EntityFramework.Repository</id>
     <version>0.9</version>
     <authors>Phi Lieu</authors>
-    <description>A generic repository pattern for use with EntityFramework. This library also support accessing multiple DB context in the same project.</description>
+    <description>A generic repository pattern for use with EntityFramework. This library also supports accessing multiple DB context in the same project.</description>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<projectUrl>https://github.com/philieu/EntityFramework.Repository</projectUrl>
     <dependencies>
