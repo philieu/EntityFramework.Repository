@@ -1,12 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Common;
 using System.Data.Entity;
-using System.Data.Entity.Core;
 using System.Data.Entity.Core.Objects;
 using System.Linq.Expressions;
-using System.Reflection;
 
 namespace EntityFramework.Repository
 {
@@ -33,19 +29,9 @@ namespace EntityFramework.Repository
             _context.ExecuteStoreCommand(commandText);
         }
 
-        public void OpenConnection()
+        public DbContextTransaction BeginTransaction()
         {
-            _context.Connection.Open();
-        }
-
-        public void CloseConnection()
-        {
-            _context.Connection.Close();
-        }
-
-        public DbTransaction BeginTransaction()
-        {
-            return _context.Connection.BeginTransaction(IsolationLevel.ReadCommitted);
+            return _dbContext.Database.BeginTransaction(IsolationLevel.ReadCommitted);
         }
 
         public TEntity Reload<TEntity>(TEntity entity)
@@ -61,10 +47,7 @@ namespace EntityFramework.Repository
             entry.Property(propertySelector).IsModified = true;
         }
 
-        public ObjectContextOptions ContextOptions
-        {
-            get { return _context.ContextOptions; }
-        }
+        public ObjectContextOptions ContextOptions => _context.ContextOptions;
 
         public IObjectSet<T> CreateObjectSet<T>() where T : class
         {
@@ -81,9 +64,9 @@ namespace EntityFramework.Repository
         {
             if (!_disposed)
             {
-                if (disposing && _context != null)
+                if (disposing)
                 {
-                    _context.Dispose();
+                    _context?.Dispose();
                 }
             }
             _disposed = true;
@@ -92,7 +75,6 @@ namespace EntityFramework.Repository
         public void Dispose()
         {
             Dispose(true);
-            GC.SuppressFinalize(this);
         }
     }
 }

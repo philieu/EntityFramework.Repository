@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace EntityFramework.Repository
@@ -26,7 +25,7 @@ namespace EntityFramework.Repository
             get { return _objectContext.ContextOptions.LazyLoadingEnabled; }
         }
 
-        public UnitOfWorkSession<TContext> StartSession()
+        public IUnitOfWorkSession<TContext> StartSession()
         {
             var session = new UnitOfWorkSession<TContext>(_objectContext);
             _sessions.Add(session);
@@ -52,7 +51,6 @@ namespace EntityFramework.Repository
         public void Dispose()
         {
             Dispose(true);
-            GC.SuppressFinalize(this);
         }
     }
 }

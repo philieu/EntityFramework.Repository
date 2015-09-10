@@ -1,5 +1,5 @@
 using System;
-using System.Data.Common;
+using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq.Expressions;
 
@@ -16,8 +16,6 @@ namespace EntityFramework.Repository
             where TEntity : class;
 
         void ExecuteStoreCommand(string commandText);
-        void OpenConnection();
-        void CloseConnection();
-        DbTransaction BeginTransaction();
+        DbContextTransaction BeginTransaction();
     }
 }

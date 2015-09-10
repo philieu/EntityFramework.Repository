@@ -7,6 +7,6 @@ namespace EntityFramework.Repository
     {
         void SaveChanges();
         bool LazyLoadingEnabled { set; get; }
-        UnitOfWorkSession<TContext> StartSession();
+        IUnitOfWorkSession<TContext> StartSession();
     }
 }

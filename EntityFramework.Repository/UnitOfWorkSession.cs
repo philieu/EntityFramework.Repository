@@ -1,26 +1,21 @@
 ﻿using System;
 using System.Data.Common;
+using System.Data.Entity;
 
 namespace EntityFramework.Repository
 {
-    public class UnitOfWorkSession<TContext> : IDisposable, IUnitOfWorkSession<TContext> where TContext: IDbContext
+    public class UnitOfWorkSession<TContext> : IUnitOfWorkSession<TContext> where TContext: IDbContext
     {
-        private readonly IObjectContext<TContext> _objectContext;
-        private readonly DbTransaction _dbTransaction;
-        private bool _hasCommitted;
+        private readonly DbContextTransaction _dbTransaction;
 
         public UnitOfWorkSession(IObjectContext<TContext> objectContext)
         {
-            _objectContext = objectContext;
-            _objectContext.OpenConnection();
-            _dbTransaction = _objectContext.BeginTransaction();
-            _hasCommitted = false;
+            _dbTransaction = objectContext.BeginTransaction();
         }
 
         public void Commit()
         {
             _dbTransaction.Commit();
-            _hasCommitted = true;
         }
 
         private bool _disposed;
@@ -34,12 +29,9 @@ namespace EntityFramework.Repository
         {
             if (!_disposed)
             {
-                if (disposing && _objectContext != null)
-                {
-                    if (!_hasCommitted) _dbTransaction.Rollback();
-                    _objectContext.CloseConnection();
-                }
+                if (disposing) _dbTransaction.Dispose();
             }
+
             _disposed = true;
         }
         

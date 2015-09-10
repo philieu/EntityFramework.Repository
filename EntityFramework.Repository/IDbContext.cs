@@ -6,6 +6,7 @@ namespace EntityFramework.Repository
 {
     public interface IDbContext
     {
+        Database Database { get; }
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
         int SaveChanges();
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;

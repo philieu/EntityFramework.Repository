@@ -1,6 +1,8 @@
-﻿namespace EntityFramework.Repository
+﻿using System;
+
+namespace EntityFramework.Repository
 {
-    public interface IUnitOfWorkSession<TContext>
+    public interface IUnitOfWorkSession<TContext> : IDisposable
         where TContext : IDbContext
     {
         void Commit();
