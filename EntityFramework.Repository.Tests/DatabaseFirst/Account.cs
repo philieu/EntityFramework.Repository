@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EntityFramework.Repository.Tests.Data
+namespace EntityFramework.Repository.Tests.DatabaseFirst
 {
     using System;
     using System.Collections.Generic;

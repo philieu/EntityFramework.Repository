@@ -1,10 +1,9 @@
 ﻿using System;
 using Autofac;
-using EntityFramework.Repository.Tests.Data;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace EntityFramework.Repository.Tests
+namespace EntityFramework.Repository.Tests.DatabaseFirst
 {
     [TestFixture]
     public class BasicOperationTests : TestBase 

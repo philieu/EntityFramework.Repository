@@ -75,28 +75,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasicOperationTests.cs" />
-    <Compile Include="Data\Account.cs">
+    <Compile Include="DatabaseFirst\BasicOperationTests.cs" />
+    <Compile Include="DatabaseFirst\Account.cs">
       <DependentUpon>TestDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\ITestDbContext.cs" />
-    <Compile Include="Data\TestDb.Context.cs">
+    <Compile Include="DatabaseFirst\ITestDbContext.cs" />
+    <Compile Include="DatabaseFirst\TestDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TestDb.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\TestDb.cs">
+    <Compile Include="DatabaseFirst\TestDb.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TestDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\TestDb.Designer.cs">
+    <Compile Include="DatabaseFirst\TestDb.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TestDb.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Data\TestDbEntities.cs" />
-    <Compile Include="Data\Transaction.cs">
+    <Compile Include="DatabaseFirst\TestDbEntities.cs" />
+    <Compile Include="DatabaseFirst\Transaction.cs">
       <DependentUpon>TestDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,17 +108,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Data\TestDb.edmx">
+    <EntityDeploy Include="DatabaseFirst\TestDb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TestDb.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Data\TestDb.edmx.diagram">
+    <None Include="DatabaseFirst\TestDb.edmx.diagram">
       <DependentUpon>TestDb.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\TestDb.Context.tt">
+    <Content Include="DatabaseFirst\TestDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TestDb.edmx</DependentUpon>
       <LastGenOutput>TestDb.Context.cs</LastGenOutput>
@@ -126,7 +126,7 @@
     <Content Include="Data\TestDb.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\TestDb.tt">
+    <Content Include="DatabaseFirst\TestDb.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TestDb.edmx</DependentUpon>
       <LastGenOutput>TestDb.cs</LastGenOutput>

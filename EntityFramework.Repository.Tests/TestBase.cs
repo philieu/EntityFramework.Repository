@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EntityFramework.Repository.Tests.Data;
+﻿using System.Linq;
+using EntityFramework.Repository.Tests.DatabaseFirst;
 using NUnit.Framework;
 
 namespace EntityFramework.Repository.Tests
