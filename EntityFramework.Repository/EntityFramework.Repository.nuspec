@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>EntityFramework.Repository</id>
-    <version>0.9</version>
+    <version>$version$</version>
     <authors>Phi Lieu</authors>
     <description>A generic repository pattern for use with EntityFramework. This library also supports accessing multiple DB context in the same project.</description>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
