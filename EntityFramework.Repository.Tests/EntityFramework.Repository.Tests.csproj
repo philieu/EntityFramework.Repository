@@ -75,6 +75,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeFirst\BasicOperationTests.cs" />
+    <Compile Include="CodeFirst\CodeFirstTestDbContext.cs" />
+    <Compile Include="CodeFirst\ICodeFirstTestDbContext.cs" />
+    <Compile Include="CodeFirst\Role.cs" />
+    <Compile Include="CodeFirst\User.cs" />
     <Compile Include="DatabaseFirst\BasicOperationTests.cs" />
     <Compile Include="DatabaseFirst\Account.cs">
       <DependentUpon>TestDb.tt</DependentUpon>
